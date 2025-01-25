@@ -1,0 +1,32 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='?', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Has iniciado sesión como {bot.user}')
+
+@bot.command(name='plastico')
+async def plastico_command(ctx):
+    with open('tblanco.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(content="El plástico se desecha en el tacho blanco y se puede reciclar", file=picture)
+
+@bot.command(name='restosdecomida')
+async def plastico_command(ctx):
+    with open('tverde.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(content="Los restos de comida se desechan en el tacho verde", file=picture)
+
+@bot.command(name='papelhigienico')
+async def plastico_command(ctx):
+    with open('tnegro.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(content="El papel higienico se desechan en el tacho negro", file=picture)
+
+bot.run("MTMzMjc1OTA4OTYxNjM5MjI5Mw.G3nnqd.goqllW4kKFf0q_vlPBFFgEY_Jmf3TqPhUeCId0")
